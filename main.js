@@ -325,27 +325,145 @@
 // console.log(ko.split('').length)
 
 
-function digitSum(n) {
-	let num = n.toString()
-		.split('')
-		.map(e => parseInt(e))
-		.reduce((a, b) => a + b)
-	if (num.toString().length > 1) {
-		num = num.toString()
-			.split('')
-			.map(e => parseInt(e))
-			.reduce((a, b) => a + b)
-		if (num.toString().length > 1) {
-			num = num.toString()
-				.split('')
-				.map(e => parseInt(e))
-				.reduce((a, b) => a + b)
+// function digitSum(n) {
+// 	let num = n.toString()
+// 		.split('')
+// 		.map(e => parseInt(e))
+// 		.reduce((a, b) => a + b)
+// 	if (num.toString().length > 1) {
+// 		num = num.toString()
+// 			.split('')
+// 			.map(e => parseInt(e))
+// 			.reduce((a, b) => a + b)
+// 		if (num.toString().length > 1) {
+// 			num = num.toString()
+// 				.split('')
+// 				.map(e => parseInt(e))
+// 				.reduce((a, b) => a + b)
+// 		}
+// 	}
+// 	return num
+// }
+// console.log(digitSum(49319349319349319349))
+// console.log(digitSum(493193))
+// console.log(digitSum(456))
+// console.log(digitSum(16))
+// console.log(digitSum(132189))
+
+//--
+
+// function getNumbers(num) {
+// 	let res = []
+// 	let base = 10
+// 	let c = Math.abs(num)
+// 	do {
+// 		let a = Math.floor(c / base)
+// 		let d = c - a * base
+// 		res.unshift(d)
+// 		c = a
+// 	} while (c > 0)
+// 	return res
+// }
+// console.log(getNumbers(493193))   //[4, 9, 3, 1, 9, 3]
+// //--
+// var str = '12345';
+// let r = [].map.call(str, function (x) {
+// 	return x;
+// }).join(',');
+// console.log(r)                    //1,2,3,4,5 
+// console.log(typeof r)              //string
+
+//++Учитывая целое число, определите, квадратное ли оно
+// var isSquare = function (n) {
+// 	return Math.sqrt(n) % 1 === 0;
+// }
+// console.log(isSquare(27))
+
+//+++ ДНК
+
+// function DNAStrand(dna) {
+// 	let s = "";
+// 	for (let i = 0; i < dna.length; i++){
+// 		switch (dna.charAt(i)) {
+// 			case 'A': s += 'T'; break;
+// 			case 'T': s += 'A'; break;
+// 			case 'C': s += 'G'; break;
+// 			case 'G': s += 'C'; break;
+// 		}
+// 	}
+// 	return s;
+// }
+// console.log(DNAStrand('GTAT'));
+
+//++фильтрует список строк и возвращает список только с именами ваших друзей
+// function friend(friends) {
+// 	let result = friends.filter(item => item.length === 4)
+// 	return result
+// }
+// console.log(friend(["Jimm", "Cari", "aret", "truehdnviegkwgvke", "sixtyiscooooool"]))
+
+//++ отсортировать нечетные числа по возрастанию, но четные числа должны быть на своих местах
+// function sortArray(n) {
+// 	for (let i = 0; i < n.length; i++) {
+// 		for (let k = i; k < n.length; k++) {
+// 			if (n[i] % 2 !== 0 && n[k] % 2 !== 0) {
+// 				if (n[i] > n[k]) {
+// 					let c = n[k]
+// 					n[k] = n[i]
+// 					n[i] = c
+// 				}
+// 			}
+// 		}
+// 	}
+// 	return n
+// }
+// console.log(sortArray([5, 3, 1, 8, 0]))
+
+//--2
+// function sortArray(array) {
+// 	var odd = array.filter(elem => elem % 2 !== 0).sort((a, b) => a - b);
+// 	return array.map(elem => elem % 2 === 0 ? elem : odd.shift());
+
+// console.log(sortArray([17, 3, 1, 8, 0]))
+//--3
+// function sortArray(array) {
+// 	var odd = array
+// 		.filter(n => n % 2)                     //не чётные
+// 		.sort((a, b) => a - b);
+// console.log(odd)
+// 	return array.map(n => n % 2 ? odd.shift() : n);
+// }
+// console.log(sortArray([17, 3, 1, 8, 0]))
+
+//-- 
+// const a = [111, 44, 135, 27, 21]
+// const c = a.filter(n => n % 2)
+// const b = a.sort((a, b) => a - b)        //a - b -сортируем от большенго к еньшему  //[1, 2, 3, 4] или наоборот b - a
+// console.log(b)
+//++анаграмма
+
+function anagrams(n) {
+	let original = 'racer'
+	let r = ''
+	let vi = []
+	const sort = (str) => str.replace(/\s+/g, '').toLowerCase().split('').sort().join('')
+
+	for (let i = 0; i < n.length; i++) {
+		if (sort(original) === sort(n[i])) {
+			r += n[i]
+			vi = r.match(/.{1,5}/g)
 		}
 	}
-	return num
+	return vi 
 }
-console.log(digitSum(49319349319349319349))
-console.log(digitSum(493193))
-console.log(digitSum(456))
-console.log(digitSum(16))
-console.log(digitSum(132189))
+const y = anagrams(['crazer', 'carer', 'racar', 'caers', 'racer'])
+console.log('y', y)
+
+
+//++
+
+
+
+
+
+
