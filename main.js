@@ -7,8 +7,8 @@
 // 	s = [...new Set(s)]
 // 	return s
 // }
-// const arr = arrayDiff([1, 2], [2])
-// console.log(arr)
+// const arrqw= arrayDiff([1, 2], [2])
+// console.log(arrqw)
 
 
 //-----------------------------------------
@@ -41,15 +41,15 @@
 // function arrayDiff(a, b) {
 // 	return a.filter(num => !b.includes(num))
 // }
-// let arr = arrayDiff([1, 2], [2])
-// console.log(arr)
+// let arr123 = arrayDiff([1, 2], [2])
+// console.log(arr123)
 //---------------------------------------------------
 //? вариант 3(option- 3)
 // function arrayDiff(a, b) {
 // 	return a.filter(num => b.indexOf(num))
 // }
-// let arr = arrayDiff([11, 22], [22])
-// console.log(arr)
+// let arrl = arrayDiff([11, 22], [22])
+// console.log(arrl)
 //--------------------------------------------------
 
 //?================================================
@@ -77,8 +77,8 @@
 // 		.filter(function (el) {
 // 		return vowels.indexOf(el.toLowerCase()) == -1;
 // 	}).join('');
-// 	// console.log(vowels)
-// 	// console.log(this)
+// 	console.log(vowels)
+// 	console.log(this)
 // }
 //-----------------------------
 // const disemvowel = (str) => {
@@ -442,28 +442,146 @@
 // console.log(b)
 //++анаграмма
 
-function anagrams(n) {
-	let original = 'racer'
-	let r = ''
-	let vi = []
-	const sort = (str) => str.replace(/\s+/g, '').toLowerCase().split('').sort().join('')
+// function anagrams(n) {
+// 	let original = 'racer'
+// 	let r = ''
+// 	let vi = []
+// 	const sort = (str) => str.replace(/\s+/g, '').toLowerCase().split('').sort().join('')
 
-	for (let i = 0; i < n.length; i++) {
-		if (sort(original) === sort(n[i])) {
-			r += n[i]
-			vi = r.match(/.{1,5}/g)
-		}
+// 	for (let i = 0; i < n.length; i++) {
+// 		if (sort(original) === sort(n[i])) {
+// 			r += n[i]
+// 			vi = r.match(/.{1,5}/g)
+// 		}
+// 	}
+// 	return vi 
+// }
+// const y = anagrams(['crazer', 'carer', 'racar', 'caers', 'racer'])
+// console.log('y', y)
+//>> ___________________________________________________________
+
+function anagrams(word1, word2) {
+	const sort = str => str.replace(/\s+/g, '').toLowerCase().split('').sort().join('')
+	if (sort(word1) === sort(word2)) {
+		return true
 	}
-	return vi 
+	else {
+		return false
+	}
 }
-const y = anagrams(['crazer', 'carer', 'racar', 'caers', 'racer'])
-console.log('y', y)
+// const y = anagrams('apple', 'ppale')
+// const y = anagrams('dog', 'good')
+// const y = anagrams('cat', 'tac')
+// console.log('y', y)
 
+// \s означает «один пробел» и \s+ означает «один или несколько пробелов».
+// Но поскольку вы используете /g флаг (замените все вхождения) и заменяете его пустой строкой, ваши два выражения имеют одинаковый эффект.
+// Метод str.split(delim) разбивает строку на массив по заданному разделителю delim. Вызов split(s) с пустым аргументом s разбил бы строку на массив букв:
 
 //++
 
+//++ [2,2,2,2].map(parseINT)
+// https://habr.com/ru/post/456344/
+// let a = [2,2,2,2].map(i => parseInt(i))
+// console.log('a: ', a)                    //response: [2,2,2,2]
+// let a1 = [2, 2, 2, 2].map(parseInt)
+// console.log('a:1 ', a1)                  //response: [2, NaN, NaN, 2]
+// let a2 = ['2', '2', '2', '2'].map(parseInt)
+// console.log('a2: ', a2)                  //response: [2, NaN, NaN, 2]
+// console.log('--', parseInt("2", 3))      //response: 2
 
+//++false || (false && 2) || 0
 
+// console.log('--', false || (false && 2) || 0)   //response: 0
+// console.log('--1', false || (false && 2))       //response: false
+// Если все операнды являются ложными (false), возвращает последний из них.
+// Другими словами, цепочка ИЛИ "||" возвращает первое истинное значение или последнее, если такое значение не найдено.
+null || 0 || 1  //response: 1 (первое истинное значение)
 
+//&& В традиционном программировании && возвращает true, если оба аргумента истинны, а иначе – false
+// возвращает первое ложное значение. Или последнее, если ничего не найдено.
+// Приоритет оператора && больше, чем у ||
 
+//++чему равно a.foo
+const a = { foo: 5, bar: 6 }
+const b = a
+b.foo = 100
+// console.log('a.foo...: ', a.foo)    //response: 100
 
+//++
+const s = {
+	ivan: 300,
+	danila: 200,
+	denis: 94,
+}
+// console.log(Object.values(s))
+
+//++
+let arr123 = []
+arr123[1] = 3  //idx 0 одна дырка
+arr123[5] = 33 // idx 2,3,4 три дырки
+arr123[7] = 5 // idx 6 одна дырка
+// Total: 0,3,2,3,4,33,5,6 length=8
+// arr.test = 5
+// console.log(arr.length) //8
+// console.log("🚀  _ file: main.js _ line 513 _ sortArray _ arr", arr)
+// Варианты неправильного применения массива:
+// Добавление нечислового свойства, например: arr.test = 5.
+// Создание «дыр», например: добавление arr[0], затем arr[1000] (между ними ничего нет).
+// Заполнение массива в обратном порядке, например: arr[1000], arr[999] и т.д.
+
+//++
+f.call(null)
+function f() {
+	// console.log(this)  //window
+}
+// Когда вы используете .call или .apply с null или undefined, вместо него автоматически используется значение по умолчанию this(обычно window), если не в строгом режиме. (глобальным объектом Function.prototype.call)
+// Если вы находитесь в строгом режиме, на самом деле это будет nullили undefined.
+
+//++
+let ph = 'Hello'
+if (true) {
+	let user = 'User'
+	function say() {
+		// console.log(`${ph}, ${user}`)  //resolve: Hello, User
+	}
+}
+say()
+
+//++
+// console.log(1)
+// console.log(2)
+// setTimeout(() => console.log(3), 0)
+// setTimeout(() => console.log(4), 1000)
+// Promise.resolve().then(() => console.log(5))
+// const prom = new Promise((resolve, reject) => {
+// 	resolve()
+// })
+// 	.then(() => console.log(5.5))
+
+//++
+let promise = new Promise((resolve, reject) => {
+	resolve(10)
+	setTimeout(() => resolve(20), 1000)
+})
+// .then(alert)
+
+// ____________
+// let promise = new Promise((resolve, reject) => {
+// 	resolve(10)
+// 	setTimeout(() => {
+// 		return new Promise((resolve, reject) => {
+// 			resolve(20)
+// 		}).then(alert)
+// 	}, 1000)
+// })
+// 	.then(alert)
+
+//++чистая функция
+
+let fgj = ['Hi', 'friend']
+const dirty = arr => arr.splice(1, 1)
+// console.log(dirty(fgj))   //['friend']
+// console.log(fgj)          //['Hi']
+
+//! Все значения являются истинными, за исключением: false, 0, "" (пустая строка), null, undefined, и NaN.
